@@ -1,0 +1,39 @@
+{
+    "name": "cab-booking-apis",
+    "version": "1.0.0",
+    "description": "Rest APIs for cab booking",
+    "main": "src/index.js",
+    "scripts": {
+        "start": "pm2 start ecosystem.config.json",
+        "dev": "NODE_ENV=development nodemon src/index.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/sibibiju/cab-booking-apis.git"
+    },
+    "author": "Sibi Kandathil",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/sibibiju/cab-booking-apis/issues"
+    },
+    "homepage": "https://github.com/sibibiju/cab-booking-apis#readme",
+    "dependencies": {
+        "dotenv": "^10.0.0",
+        "express": "^4.17.1",
+        "express-mongo-sanitize": "^2.1.0",
+        "express-rate-limit": "^5.5.0",
+        "helmet": "^4.6.0",
+        "http-status": "^1.5.0",
+        "joi": "^17.4.2",
+        "jsonwebtoken": "^8.5.1",
+        "mongoose": "^6.0.12",
+        "pm2": "^5.1.2",
+        "swagger-jsdoc": "^6.1.0",
+        "swagger-ui-express": "^4.1.6"
+    },
+    "devDependencies": {
+        "eslint": "^8.1.0",
+        "eslint-config-google": "^0.14.0",
+        "nodemon": "^2.0.14"
+    }
+}
