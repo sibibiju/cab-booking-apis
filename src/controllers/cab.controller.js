@@ -56,7 +56,7 @@ const bookCab = catchAsync(async (req, res, next) => {
     new History(doc).save((err, doc) => {
       if (err) throw err;
     });
-  
+
     res.send({'bookingStatus': 'success'}).status(200);
   }
 
