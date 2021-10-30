@@ -3,9 +3,10 @@ const helmet = require('helmet');
 const xss = require('xss-clean');
 const cors = require('cors');
 const passport = require('passport');
+const morgan = require('morgan');
 const httpStatus = require('http-status');
 const mongoSanitize = require('express-mongo-sanitize');
-// const routes = require('./routes/v1');
+const routes = require('./routes/v1');
 const config = require('./config/config');
 // const {jwtStrategy} = require('./config/passport');
 const ApiError = require('./utils/ApiError');
@@ -23,6 +24,8 @@ app.use(mongoSanitize());
 app.use(cors());
 app.options('*', cors());
 
+app.use(morgan('tiny'));
+
 // app.use(passport.initialize());
 // passport.use('jwt', jwtStrategy);
 // parse JSON
@@ -30,7 +33,7 @@ app.use(express.json());
 
 // parse URL encoded request
 app.use(express.urlencoded({extended: true}));
-// app.use('/v1', routes);
+app.use('/v1', routes);
 
 // Limit the number of requests to every API
 app.use(rateLimiter);

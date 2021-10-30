@@ -11,7 +11,7 @@ const bookingHistorySchema = mongoose.Schema(
         required: true,
       },
       fare: {
-        type: Number,
+        type: String,
       },
       distance: {
         type: Number,

@@ -60,6 +60,10 @@ const cabSchema = mongoose.Schema(
         type: carSchema,
         required: true,
       },
+      status: {
+        type: String,
+        required: true,
+      },
     },
     {
       timestamps: true,

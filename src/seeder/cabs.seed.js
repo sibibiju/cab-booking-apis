@@ -15,8 +15,9 @@ const data = {
   },
   car: {
     model: faker.vehicle.model(),
-    licensePlate: faker.datatype.number(4),
+    licensePlate: faker.datatype.number({'min': 4, 'max': 6}),
   },
+  status: 'available',
 };
 
 const cabs = [new Cab(data)];

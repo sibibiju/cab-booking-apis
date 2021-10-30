@@ -14,6 +14,7 @@ const envSchema = Joi.object().keys({
       .description('Access token expires after the configured minutes'),
   JWT_REFRESH_EXPIRY_DAYS: Joi.number().default(10)
       .description('Refresh token expires after the configured days'),
+  MIN_DISTANCE: Joi.number().default(400),
 }).unknown();
 
 const {value: envVars, error} = envSchema.validate(process.env);
@@ -24,6 +25,7 @@ if (error) {
 module.exports = {
   env: envVars.NODE_ENV,
   port: envVars.PORT,
+  min_distance: envVars.MIN_DISTANCE,
   mongodb: {
     url: envVars.MONGODB_URL,
     options: {},
