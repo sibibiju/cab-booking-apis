@@ -9,24 +9,35 @@ const mongoSanitize = require('express-mongo-sanitize');
 const config = require('./config/config');
 const morgan = require('./config/morgan');
 const ApiError = require('./utils/ApiError');
-const { errorHandler, errorConverter } = require('./middlewares/error');
-const logger = require('./config/logger');
+const {errorHandler, errorConverter} = require('./middlewares/error');
 
 const app = express();
-
+// set security headers
 app.use(helmet());
-app.use(express.json());
-app.use(express.urlencoded({extended: true}));
+
+// sanitize the data
 app.use(xss());
 app.use(mongoSanitize());
+
 app.use(cors());
 app.options('*', cors());
 
+// parse JSON
+app.use(express.json());
+
+// parse URL encoded request
+app.use(express.urlencoded({extended: true}));
 // app.use('/v1', routes);
 
-app.use((err, req, res, next) => {
-  logger.error(err);
-  next(new ApiError(httpStatus.NOT_FOUND, 'Not Found'));
+// send 404 API error for undefined API endpoints
+app.use((req, res, next) => {
+  next(new ApiError(httpStatus.NOT_FOUND, httpStatus[httpStatus.NOT_FOUND]));
 });
+
+// Convert errors to standard format
+app.use(errorConverter);
+
+// Handle errors
+app.use(errorHandler);
 
 module.exports = app;
