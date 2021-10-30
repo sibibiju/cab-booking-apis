@@ -28,7 +28,6 @@ const getCabs = catchAsync(async (req, res, next) => {
 
 const bookCab = catchAsync(async (req, res, next) => {
   const cabId = req.body.cabId;
-
   const cab = await Cab.findOne({_id: cabId}).exec();
   if (!cab) {
     throw new ApiError(httpStatus.NOT_FOUND, httpStatus[httpStatus.NOT_FOUND]);
@@ -43,7 +42,7 @@ const bookCab = catchAsync(async (req, res, next) => {
 
   if (response.acknowledged) {
     const id = cab._id.toString();
-    const userId = '617d2d7b20869f3f9407087f';
+    const userId = req.userId;
     const fare = faker.datatype.number({min: 100, max: 2000}) + '$';
     const distance = faker.datatype.number({min: 1, max: 20});
     const doc = {

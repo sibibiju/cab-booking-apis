@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
+const passport = require('passport');
 
 const userSchema = mongoose.Schema(
     {
@@ -46,12 +47,12 @@ userSchema.pre('save', function(next) {
 
 /**
  * Check if password matches the user's password
+ * @param {string} inputPassword
  * @param {string} password
  * @return {Promise<boolean>}
  */
-userSchema.methods.isPasswordMatch = async (password) => {
-  const user = this;
-  return bcrypt.compare(password, user.password);
+userSchema.methods.isPasswordMatch = async (inputPassword, password) => {
+  return bcrypt.compare(inputPassword, password);
 };
 
 const User = mongoose.model('User', userSchema);
