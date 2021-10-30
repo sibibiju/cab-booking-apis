@@ -7,9 +7,10 @@ const httpStatus = require('http-status');
 const mongoSanitize = require('express-mongo-sanitize');
 // const routes = require('./routes/v1');
 const config = require('./config/config');
-const morgan = require('./config/morgan');
+// const {jwtStrategy} = require('./config/passport');
 const ApiError = require('./utils/ApiError');
 const {errorHandler, errorConverter} = require('./middlewares/error');
+const rateLimiter = require('./middlewares/rateLimiter');
 
 const app = express();
 // set security headers
@@ -22,12 +23,17 @@ app.use(mongoSanitize());
 app.use(cors());
 app.options('*', cors());
 
+// app.use(passport.initialize());
+// passport.use('jwt', jwtStrategy);
 // parse JSON
 app.use(express.json());
 
 // parse URL encoded request
 app.use(express.urlencoded({extended: true}));
 // app.use('/v1', routes);
+
+// Limit the number of requests to every API
+app.use(rateLimiter);
 
 // send 404 API error for undefined API endpoints
 app.use((req, res, next) => {
