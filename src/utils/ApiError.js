@@ -1,7 +1,7 @@
 /* eslint-disable require-jsdoc */
 
 /**
- * Class for creating API Errors
+ * Class for creating API Errors. It extends Error class.
  */
 class ApiError extends Error {
   constructor(statusCode, message, isOperational = true, stack = '') {

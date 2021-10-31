@@ -1,5 +1,6 @@
 /* eslint-disable valid-jsdoc */
 /* eslint-disable require-jsdoc */
+
 /**
  * Get distance from coordinates
  * @param {source} object latitude & longitude of source

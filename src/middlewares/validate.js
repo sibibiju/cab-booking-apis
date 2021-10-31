@@ -3,6 +3,9 @@ const Joi = require('joi');
 const Schemas = require('../validations');
 const ApiError = require('../utils/ApiError');
 
+/*
+ * Middleware for validating the req body/query based on schema & property
+ */
 const validator = (schemaName, property = 'body') => async (req, res, next) => {
   if (!Schemas.hasOwnProperty(schemaName)) {
     const code = httpStatus.INTERNAL_SERVER_ERROR;

@@ -5,6 +5,9 @@ const tokenService = require('../services/token.service');
 const authService = require('../services/auth.service');
 const History = require('../models/history.model');
 
+/**
+ * Middleware for login & getting user details & accesstoken
+ */
 const login = catchAsync(async (req, res) => {
   const {email, password} = req.body;
   const user = await authService.login(email, password);
@@ -13,6 +16,9 @@ const login = catchAsync(async (req, res) => {
   res.send(response);
 });
 
+/**
+ * Middleware for booking history
+ */
 const getBookingHistory = catchAsync(async (req, res, next) => {
   const userId = req.userId;
   const bookingHistory = await History.find({userId: userId})

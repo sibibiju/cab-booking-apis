@@ -1,5 +1,6 @@
 /* eslint-disable valid-jsdoc */
 /* eslint-disable require-jsdoc */
+
 /**
  * Convert the response according to JSONAPI specification
  * @param {result} object The response object or array of objects

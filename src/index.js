@@ -6,6 +6,7 @@ const logger = require('./config/logger');
 let server;
 mongoose.connect(config.mongodb.url, config.mongodb.options).then(() => {
   logger.info('Connected to MongoDB database');
+  // Run the app only after connecting to Database
   server = app.listen(config.port, () => {
     logger.info(`Application running on port: ${config.port} `);
   });

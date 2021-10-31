@@ -5,6 +5,7 @@ const path = require('path');
 const envPath = path.join(__dirname, '../../.env');
 dotenv.config({path: envPath});
 
+// Validate all requried env variables
 const envSchema = Joi.object().keys({
   NODE_ENV: Joi.string().default('development'),
   PORT: Joi.number().required().default(3000),
