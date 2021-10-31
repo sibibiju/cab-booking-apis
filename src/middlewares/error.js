@@ -14,9 +14,15 @@ const logger = require('../config/logger');
  */
 const errorConverter = (err, req, res, next) => {
   let error = err;
-  if (!(error instanceof Error)) {
-    const statusCode = error.statusCode || error instanceof mongoose.Error ?
-        httpStatus.BAD_REQUEST : httpStatus.INTERNAL_SERVER_ERROR;
+  if (err instanceof mongoose.Error) {
+    const statusCode = httpStatus.BAD_REQUEST;
+    const message = err.message;
+    const stack = err.stack ? err.stack : '';
+
+    error = new ApiError(statusCode, message, false, stack);
+  } else if (!(error instanceof Error)) {
+    const statusCode = error.statusCode ? httpStatus.statusCode :
+        httpStatus.INTERNAL_SERVER_ERROR;
 
     const message = error.message ||
         httpStatus[httpStatus.INTERNAL_SERVER_ERROR];
