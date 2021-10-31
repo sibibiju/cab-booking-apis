@@ -15,7 +15,9 @@ const login = catchAsync(async (req, res) => {
 
 const getBookingHistory = catchAsync(async (req, res, next) => {
   const userId = req.userId;
-  const bookingHistory = await History.find({userId: userId}).limit(10).populate('cab');
+  const bookingHistory = await History.find({userId: userId})
+      .limit(10)
+      .populate('cab', {_id: 1, driver: 1, car: 1});
   return res.send(toJsonApi(bookingHistory, 'booking-history'));
 });
 

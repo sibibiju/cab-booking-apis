@@ -9,6 +9,7 @@ const History = require('../models/history.model');
 const faker = require('faker');
 const mongoose = require('mongoose');
 
+
 const getCabs = catchAsync(async (req, res, next) => {
   const currentLocation = {};
   currentLocation.latitude = req.query.latitude;
@@ -64,7 +65,7 @@ const bookCab = catchAsync(async (req, res, next) => {
       if (err) return next(err);
     });
 
-    res.send({'bookingStatus': 'success'}).status(200);
+    return res.send({'bookingStatus': 'success'}).status(200);
   }
 
   return next(new ApiError(500, 'Something went wrong while processing the request'));
