@@ -15,11 +15,13 @@ This app is designed for basic cab booking functions such as getting nearby cab 
 - NoSQL Database - MongoDB & object modeling using Mongoose
 - Authentication using JWT tokens
 - Logging using winston & morgan
+- Validation using Joi
 - Centralized error handling
+- Tests using Jest
 - API documentation using postman
 - Process management using PM2
 - Security using helmet
-- Sanitization and filtering
+- Sanitization, filtering using xss-clean & express-mongo-sanitize
 - Linting using ESLint
 
 
