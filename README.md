@@ -16,7 +16,7 @@ This app is designed for basic cab booking functions such as getting nearby cab 
 - Authentication using JWT tokens
 - Logging using winston & morgan
 - Centralized error handling
-- API documentation using swagger & postman
+- API documentation using postman
 - Process management using PM2
 - Security using helmet
 - Sanitization and filtering
