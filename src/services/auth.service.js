@@ -5,7 +5,7 @@ const User = require('../models/user.model');
 /**
  * Login with username and password
  * @param {string} email
- * @param {string} password
+ * @param {string} inputPassword
  * @return {Promise<User>}
  */
 const login = async (email, inputPassword) => {
