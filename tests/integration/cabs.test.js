@@ -18,7 +18,7 @@ describe('Cab Routes', () => {
     test('Should return unauthorized code if Authorization is not provided', async () => {
       const res = await request(app)
           .get('/v1/cabs')
-          .send(currentLocation)
+          .query(currentLocation)
           .expect(httpStatus.UNAUTHORIZED);
 
       expect(res.body).toEqual({
@@ -33,7 +33,7 @@ describe('Cab Routes', () => {
       const token = await generateToken();
       const res = await request(app)
           .get('/v1/cabs')
-          .send(currentLocation)
+          .query(currentLocation)
           .set('Authorization', token)
           .expect(httpStatus.OK);
 
@@ -62,6 +62,10 @@ describe('Cab Routes', () => {
 
       const data = await request(app)
           .get('/v1/cabs')
+          .query({
+            latitude: 20,
+            longitude: 70,
+          })
           .expect(httpStatus.OK)
           .set('Authorization', token);
 
