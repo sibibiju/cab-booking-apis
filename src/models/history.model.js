@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const Cab = require('./cab.model');
 
 const bookingHistorySchema = mongoose.Schema(
     {
@@ -7,7 +8,8 @@ const bookingHistorySchema = mongoose.Schema(
         required: true,
       },
       cab: {
-        type: String,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: Cab,
         required: true,
       },
       fare: {

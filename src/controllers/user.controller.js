@@ -15,7 +15,7 @@ const login = catchAsync(async (req, res) => {
 
 const getBookingHistory = catchAsync(async (req, res, next) => {
   const userId = req.userId;
-  const bookingHistory = await History.find({userId: userId}).limit(10);
+  const bookingHistory = await History.find({userId: userId}).limit(10).populate('cab');
   return res.send(toJsonApi(bookingHistory, 'booking-history'));
 });
 
