@@ -11,7 +11,7 @@ describe('Error handling middlewares', () => {
   describe('Error converter', () => {
     test('should return the same ApiError status & message it was called with', () => {
       const error = new ApiError(httpStatus.BAD_REQUEST, 'Random error generated');
-      const next = jest.fn((next) => console.log(next));
+      const next = jest.fn();
       errorConverter(error, httpMocks.createRequest(), httpMocks.createResponse(), next);
       expect(next).toHaveBeenCalledWith(error);
     });

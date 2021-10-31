@@ -8,7 +8,7 @@
     "dev": "NODE_ENV=development nodemon src/index.js",
     "seed-cabs": "node src/seeder/cabs.seed.js",
     "seed-users": "node src/seeder/users.seed.js",
-    "test": "jest --watch --verbose false"
+    "test": "jest --watch --verbose false --testPathPattern=tests"
   },
   "repository": {
     "type": "git",
