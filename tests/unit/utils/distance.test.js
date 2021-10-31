@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-const distance = require('../../src/utils/distance');
+const distance = require('../../../src/utils/distance');
 
 describe('Calculate distance between 2 coordinates', () => {
   const source = {

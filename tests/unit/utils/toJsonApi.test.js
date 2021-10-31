@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-const toJsonApi = require('../../src/utils/toJsonApi');
+const toJsonApi = require('../../../src/utils/toJsonApi');
 
 describe('JSON API converter', () => {
   describe('convert response to JSON API spec', () => {
