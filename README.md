@@ -48,3 +48,8 @@ npm run dev
 ```
 npm start
 ```
+
+- Run all the tests
+```
+npm run test
+```
